@@ -11,5 +11,6 @@ class BootStrap {
 		new Celular(modelo: mod1, nombre: "N6-666",numero: 123324).save()
     }
     def destroy = {
+		
     }
 }
