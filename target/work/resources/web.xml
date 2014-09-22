@@ -18,6 +18,17 @@
   </context-param>
 
     <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter</filter-class>
+    <async-supported>true</async-supported>
+    </filter>
+  <filter>
+    <filter-name>AssetPipelineFilter</filter-name>
+    <filter-class>asset.pipeline.AssetPipelineFilter</filter-class>
+    <async-supported>true</async-supported>
+  </filter>
+
+    <filter>
         <filter-name>charEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     <async-supported>true</async-supported>
@@ -30,11 +41,6 @@
             <param-value>true</param-value>
         </init-param>
     </filter>
-  <filter>
-    <filter-name>AssetPipelineFilter</filter-name>
-    <filter-class>asset.pipeline.AssetPipelineFilter</filter-class>
-    <async-supported>true</async-supported>
-  </filter>
   <filter>
     <filter-name>urlMapping</filter-name>
     <filter-class>org.codehaus.groovy.grails.web.mapping.filter.UrlMappingsFilter</filter-class>
@@ -60,6 +66,8 @@
     </init-param>
   </filter>
 
+    
+
     <filter-mapping>
         <filter-name>charEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -82,6 +90,13 @@
     <dispatcher>REQUEST</dispatcher>
     <dispatcher>ERROR</dispatcher>
   </filter-mapping>
+  <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+
+    </filter-mapping>
   <filter-mapping>
     <filter-name>urlMapping</filter-name>
     <url-pattern>/*</url-pattern>
